@@ -69,8 +69,7 @@ def rSquared(lst1, lst2):
 
 
 
-x1 = [2, 5, 7]
-x2 = [3, 1, 1]
+
 
 
 
