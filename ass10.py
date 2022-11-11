@@ -10,7 +10,7 @@ nsteps = 200
 
 
 r = 2.25    # radius (cm)
-# Qin = 30    # volume inflow rate (dV/dt): (cubic cm/s)
+Qin = 30    # volume inflow rate (dV/dt): (cubic cm/s)
 h = 0       # initial height (cm)
 k = 0.15     # outflow rate constant
 
@@ -30,9 +30,7 @@ graph.add(0, h)   # add initial values
 for t in range(1, nsteps):
     modelTime = t * dt
 
-    if modelTime <= 50:
-        Qin = 30
-    else:
+    if modelTime > 50:
         Qin = 0
 
     # Filling
