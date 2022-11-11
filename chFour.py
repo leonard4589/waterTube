@@ -10,8 +10,9 @@ from bStats import *
 # Finite Difference Model
 
 # Parameters
-dt = 1
-nsteps = 1000
+dt = 5
+nsteps = 10
+
 
 r = 2.25    # radius (cm)
 Qin = 30    # volume inflow rate (dV/dt): (cubic cm/s)
@@ -45,7 +46,7 @@ for t in range(1, nsteps):
 
     
     graph.add(modelTime, h)
-    
+    graph.wait(0.1)
 
 print (h)
 
