@@ -1,11 +1,6 @@
 import numpy as np
 import time
 from ezGraph import *
-from bStats import *
-
-# primary equation: hnew = hold + dh
-# filling dh = dt/pi*r^2*Q
-# draining dh = dt/pi*r^2*(-kh)
 
 # Finite Difference Model
 
@@ -40,20 +35,15 @@ for t in range(1, nsteps):
     h = h + dh   # update height
 
     # Draining
-    dVdt = -k * h
-    dh = dVdt * dt / (np.pi * r**2)
-    h = h + dh
+    # dVdt = -k * h
+    # dh = dVdt * dt / (np.pi * r**2)
+    # h = h + dh
 
     
     graph.add(modelTime, h)
     graph.wait(0.1)
+    
 
-print(h)
 
 # Draw graph
 graph.keepOpen()
-
-
-
-
-
