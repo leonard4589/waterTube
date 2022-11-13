@@ -50,7 +50,8 @@ for t in range(1, nsteps):
     graph.add(modelTime, h)
     graph.wait(0.1)
 
-    
+    if h > h + dh:
+        print (h)
         
 
 
