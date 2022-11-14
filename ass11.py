@@ -27,7 +27,7 @@ graph.add(0, h)   # add initial values
 
 
 
-
+s_old = 0
 # Time loop
 for t in range(1, nsteps):
     modelTime = t * dt
@@ -38,20 +38,23 @@ for t in range(1, nsteps):
         Qin = 0
 
     # Filling
-    dh = Qin * dt / (np.pi * r**2)    # find the change in height
-    h = h + dh   # update height
+    dhin = Qin * dt / (np.pi * r**2)    # find the change in height
+    h = h + dhin   # update height
     
 
     # Draining
     dVdt = -k * h
-    dh = dVdt * dt / (np.pi * r**2)
-    h = h + dh
+    dhout = dVdt * dt / (np.pi * r**2)
+    h = h + dhout
 
     graph.add(modelTime, h)
     graph.wait(0.1)
 
-    if h > h + dh:
-        print (h)
+    dh = dhin +dhout
+    s = dh/dt
+    if s < 0 and s_old > 0:
+        print (f'Maxium height: {h}')
+    s_old = s * 1
         
 
 
