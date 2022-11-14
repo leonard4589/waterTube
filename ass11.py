@@ -50,7 +50,7 @@ for t in range(1, nsteps):
     graph.add(modelTime, h)
     graph.wait(0.1)
 
-    dh = dhin +dhout
+    dh = dhin + dhout
     s = dh/dt
     if s < 0 and s_old > 0:
         print (f'Maxium height: {h}')
