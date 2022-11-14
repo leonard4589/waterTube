@@ -1,6 +1,7 @@
 import numpy as np
 import time
 from ezGraph import *
+# Gradually slowing the inflow and then finding the maximum height.
 
 # Finite Difference Model
 

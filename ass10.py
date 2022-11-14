@@ -1,6 +1,7 @@
 import numpy as np
 import time
 from ezGraph import *
+# Stopping the inflow after 50 secs.
 
 # Finite Difference Model
 

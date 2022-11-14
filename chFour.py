@@ -2,6 +2,7 @@ import numpy as np
 import time
 from ezGraph import *
 from bStats import *
+# Finding the equilibrium
 
 # primary equation: hnew = hold + dh
 # filling dh = dt/pi*r^2*Q
