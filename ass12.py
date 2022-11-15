@@ -1,7 +1,7 @@
 import numpy as np
 import time
 from ezGraph import *
-# Stopping the inflow after 50 secs.
+# Alternating the inflow rate at 30 cm^3/sec every 5 seconds.
 
 # Finite Difference Model
 
@@ -31,8 +31,10 @@ graph.add(0, h)   # add initial values
 for t in range(1, nsteps):
     modelTime = t * dt
 
-    if modelTime > 50:
+    if modelTime %10 == 0:
         Qin = 0
+    else:
+        Qin = Qin
 
     # Filling
     dh = Qin * dt / (np.pi * r**2)    # find the change in height
@@ -45,7 +47,7 @@ for t in range(1, nsteps):
 
     
     graph.add(modelTime, h)
-    # graph.wait(0.1)
+    graph.wait(0.1)
 
 
 
