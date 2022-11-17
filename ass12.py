@@ -6,12 +6,12 @@ from ezGraph import *
 # Finite Difference Model
 
 # Parameters
-dt = 5
+dt = 1
 nsteps = 200
 
 
 r = 2.25    # radius (cm)
-Qin = 30    # volume inflow rate (dV/dt): (cubic cm/s)
+QinI = 30    # volume inflow rate (dV/dt): (cubic cm/s)
 h = 0       # initial height (cm)
 k = 0.15     # outflow rate constant
 
@@ -26,15 +26,27 @@ graph = ezGraph(xmin = 0, xmax = 100,
 
 graph.add(0, h)   # add initial values
 
-
+Qflag = True
 # Time loop
 for t in range(1, nsteps):
     modelTime = t * dt
 
-    if modelTime %10 == 0:
-        Qin = 0
+    if modelTime%5 == 0:
+        if Qflag:
+            Qflag = False
+        else:
+            Qflag = True
+    
+    if Qflag:
+        Qin = 30
     else:
-        Qin = Qin
+        Qin = 0
+    # if modelTime <= 5:
+    #     Qin = QinI
+    # elif modelTime <= 10:
+    #     Qin = 0
+    # else:
+    #     Qin = QinI
 
     # Filling
     dh = Qin * dt / (np.pi * r**2)    # find the change in height
