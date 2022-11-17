@@ -2,13 +2,13 @@ import numpy as np
 import time
 import math
 from ezGraph import *
-# Alternating the inflow rate at 30 cm^3/sec every 5 seconds.
+# Alternating the inflow rate at 30 cm^3/sec every 5 seconds while having an inflow that varies in a simusoidal (wave) pattern with the function. After 100 secs it the inflow rate will stop completely.
 
 # Finite Difference Model
 
 # Parameters
 dt = 1
-nsteps = 100
+nsteps = 200
 
 
 r = 2.25    # radius (cm)
@@ -27,10 +27,25 @@ graph = ezGraph(xmin = 0, xmax = 100,
 
 graph.add(0, h)   # add initial values
 
+Qflag = True
 s_old = 0
 # Time loop
 for t in range(1, nsteps):
     modelTime = t * dt
+
+    if modelTime > 150:
+        Qin = 0
+
+    if modelTime%5 == 0:
+        if Qflag:
+            Qflag = False
+        else:
+            Qflag = True
+    
+    if Qflag:
+        Qin = 30
+    else:
+        Qin = 0
 
     Qin = 10*math.sin(50*modelTime) + 11
 
