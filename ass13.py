@@ -1,5 +1,6 @@
 import numpy as np
 import time
+import math
 from ezGraph import *
 # Alternating the inflow rate at 30 cm^3/sec every 5 seconds.
 
@@ -31,22 +32,10 @@ Qflag = True
 for t in range(1, nsteps):
     modelTime = t * dt
 
-    if modelTime%5 == 0:
-        if Qflag:
-            Qflag = False
-        else:
-            Qflag = True
-    
-    if Qflag:
-        Qin = 30
-    else:
+    Qin = 10*math.sin(5*modelTime) + 11
+
+    if Qin <= 0:
         Qin = 0
-    # if modelTime <= 5:
-    #     Qin = QinI
-    # elif modelTime <= 10:
-    #     Qin = 0
-    # else:
-    #     Qin = QinI
 
     # Filling
     dh = Qin * dt / (np.pi * r**2)    # find the change in height
