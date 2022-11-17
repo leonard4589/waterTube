@@ -2,7 +2,7 @@ import numpy as np
 import time
 import math
 from ezGraph import *
-# Water input varies in a sinusoidal (wave) pattern with Qin function within the time loop.
+# Alternating the inflow rate at 30 cm^3/sec every 5 seconds.
 
 # Finite Difference Model
 
